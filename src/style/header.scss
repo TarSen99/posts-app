@@ -1,0 +1,51 @@
+@import './mixins/menu_arrow';
+
+.header {
+  height: 100px;
+  background: #fff;
+}
+
+.header__content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.header__logo {
+  text-transform: uppercase;
+  font-weight: 900;
+  font-size: 32px;
+}
+
+.header__menu {
+  display: flex;
+  list-style-type: none;
+}
+
+
+
+.header__menu-item {
+  margin: 0 10px;
+  position: relative;
+
+  a {
+    color: rgba(0, 0, 0, .7);
+    text-decoration: none;
+    font-weight: 600;
+    width: 100%;
+    display: block;
+    padding: 0 15px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .header__menu-item__arrow {
+    @include menu-arrow;
+    border-color: #fff;
+  }
+}
+
+.header__menu-item_selected {
+  color: #000 !important;
+}

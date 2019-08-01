@@ -1,8 +1,13 @@
 import React from 'react'
+import PageHeader from './additional_components/PageHeader'
+import PostList from '../containers/PostList'
+
+import './../style/home.scss'
 
 const Home = () => (
   <main>
-    This is body
+    <PageHeader />
+    <PostList />
   </main>
 );
 

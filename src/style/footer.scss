@@ -1,0 +1,28 @@
+@import './mixins/menu_arrow';
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  height: 50px;
+  background: #000;
+  width: 100%;
+}
+
+.footer__content {
+  display: flex;
+  height: 100%;
+
+  a {
+    color: #fff;
+  }
+
+  .header__menu-item__arrow {
+    .header__menu-item__arrow {
+      @include menu-arrow;
+    }
+  }
+
+  .header__menu-item_selected {
+    color: rgba(255, 255, 255, 0.9) !important;
+  }
+}
