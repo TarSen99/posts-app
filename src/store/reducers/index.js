@@ -2,14 +2,18 @@ import {
   GET_POSTS ,
   GET_IMAGES,
   POST_DETAILS,
-  SET_LOADER
+  SET_LOADER,
+  SET_PAGE,
+  SET_MAX_PAGE_VALUE
 } from './../constants'
 
 const initialState = {
   posts: [],
   images: [],
   postDetails: {},
-  loading: false
+  loading: false,
+  page: 1,
+  maxPageValue: 1,
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -34,7 +38,16 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         loading: action.payload
       };
-
+    case SET_PAGE:
+      return {
+        ...state,
+        page: action.payload
+      };
+    case SET_MAX_PAGE_VALUE:
+      return {
+        ...state,
+        maxPageValue: action.payload
+      };
     default:
       return state
   }

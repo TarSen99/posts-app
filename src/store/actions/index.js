@@ -2,8 +2,11 @@ import {
   GET_POSTS,
   GET_IMAGES,
   POST_DETAILS,
-  SET_LOADER
+  SET_LOADER,
+  SET_PAGE,
+  SET_MAX_PAGE_VALUE
 } from './../constants'
+
 
 import {
   getPosts as getPostsList,
@@ -13,7 +16,21 @@ import {
   getPostAuthor
 } from './../../services/api'
 
-export function getPosts() {
+const PER_PAGE = 10;
+
+const getPageItems = (items, page, perPage = PER_PAGE) => {
+  const filteredItems = items.filter((post, index) => {
+    return index >= page * perPage && index < page * perPage + perPage
+  });
+
+  return filteredItems
+};
+
+const getMaxPageValue = (items, perPage) => {
+  return Math.ceil(items.length / perPage)
+};
+
+export function getPosts(page = 1) {
   return async (dispatch, getState) => {
     try {
       dispatch({ type: SET_LOADER, payload: true})
@@ -23,14 +40,15 @@ export function getPosts() {
         getImagesList()
       ]);
 
-      const posts = res[0].data;
-      const images = res[1].data;
+      const posts = getPageItems(res[0].data, page);
+      const images = getPageItems(res[1].data, page);
+      const maxPageValue = getMaxPageValue(res[0].data, PER_PAGE);
 
-      console.log('posts')
-      console.log(posts)
 
       dispatch({ type: GET_POSTS, payload: posts})
       dispatch({ type: GET_IMAGES, payload: images})
+      dispatch({ type: SET_PAGE, payload: page})
+      dispatch({ type: SET_MAX_PAGE_VALUE, payload: maxPageValue})
 
       dispatch({ type: SET_LOADER, payload: false})
     } catch (e) {
