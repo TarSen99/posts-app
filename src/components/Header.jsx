@@ -10,7 +10,7 @@ const Header = () => (
           Logo
         </div>
 
-        <Menu />
+        <Menu removeArrows={true}/>
       </div>
     </div>
   </header>

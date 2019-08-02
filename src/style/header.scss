@@ -21,6 +21,7 @@
 .header__menu {
   display: flex;
   list-style-type: none;
+  padding: 0;
 }
 
 
@@ -48,4 +49,16 @@
 
 .header__menu-item_selected {
   color: #000 !important;
+}
+
+@media screen and (max-width: 768px){
+  .header__menu-item__arrow {
+    display: none;
+  }
+
+  .header {
+    .header__menu {
+      display: none;
+    }
+  }
 }

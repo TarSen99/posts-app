@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 
 import MENU_ITEMS from './menu_config'
 
-const Menu = () => (
+const Menu = ({ removeArrows }) => (
   <nav>
     <ul className="header__menu">
       {
@@ -13,7 +13,7 @@ const Menu = () => (
               <NavLink to={item.link} exact activeClassName="header__menu-item_selected">
                 {item.title}
               </NavLink>
-              <span className="header__menu-item__arrow"></span>
+              {!removeArrows && <span className="header__menu-item__arrow"></span>}
             </li>
           )
         })
