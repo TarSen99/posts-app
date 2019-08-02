@@ -2,11 +2,13 @@ import React from 'react';
 
 import { Route, Switch } from "react-router-dom";
 
-import Header from './components/Header'
-import Footer from './components/Footer'
-import NotFound from './components/NotFound'
-import Home from './components/Home'
-import Post from './containers/Post'
+import asyncComponent from './components/AsyncComponent'
+
+const Header = asyncComponent(() => import("./components/Header"));
+const Footer = asyncComponent(() => import("./components/Footer"));
+const NotFound = asyncComponent(() => import("./components/NotFound"));
+const Home = asyncComponent(() => import("./components/Home"));
+const Post = asyncComponent(() => import("./containers/Post"));
 
 const App = () => {
   return (
