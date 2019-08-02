@@ -13,12 +13,17 @@ const getPostDetails = (id) => {
 };
 
 const getPostComments = (id) => {
-  return api.get(`/posts/${id}/comments`)
+  return api.get(`/comments?postId=${id}`)
+};
+
+const getPostAuthor = (id) => {
+  return api.get(`/users/${id}`)
 };
 
 export {
   getPosts,
   getImages,
   getPostDetails,
-  getPostComments
+  getPostComments,
+  getPostAuthor
 }

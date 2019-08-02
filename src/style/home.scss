@@ -3,6 +3,12 @@
   overflow: hidden;
   position: relative;
 
+  * {
+    ::first-letter {
+      text-transform: uppercase;
+    }
+  }
+
   h1 {
     color: #fff;
     position: absolute;

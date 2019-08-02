@@ -6,6 +6,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
   font-family: Poppins, sans-serif;
+  margin-bottom: 50px;
 }
 
 .container {
@@ -23,7 +24,7 @@ body {
   opacity: 0.2;
 }
 
-@media screen and (max-width: 768px){
+@media screen and (max-width: 1200px){
   .container {
     max-width: 90%;
   }

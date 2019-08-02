@@ -17,12 +17,12 @@ const rootReducer = (state = initialState, action) => {
     case GET_POSTS:
       return {
         ...state,
-        posts: state.posts.concat(action.payload)
+        posts: action.payload
       };
     case GET_IMAGES:
       return {
         ...state,
-        images: state.images.concat(action.payload)
+        images: action.payload
       };
     case POST_DETAILS:
       return {

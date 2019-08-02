@@ -9,10 +9,6 @@ const mapStateToProps = state => {
 };
 
 class PostList extends React.Component{
-  constructor(props) {
-    super(props)
-  }
-
   componentDidMount() {
     this.props.dispatch(getPosts())
   }

@@ -1,0 +1,47 @@
+h4, h5, p {
+  &::first-letter {
+    text-transform: uppercase;
+  }
+}
+
+h4 {
+  text-align: right;
+}
+
+.post-description {
+  max-width: 600px;
+  margin: auto;
+}
+
+.comments-container {
+  list-style: none;
+
+  li {
+    display: block;
+    margin-top: 15px;
+    border-bottom: 1px solid #8a8a8a;
+
+    p {
+      margin-bottom: 5px;
+      font-size: 14px;
+    }
+  }
+
+  .comment-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    .comment-title {
+      margin: 0;
+      max-width: 70%;
+      font-size: 16px;
+    }
+
+    .email {
+      text-transform: lowercase !important;
+      color: #4a4a4a;
+      font-size: 14px;
+    }
+  }
+}

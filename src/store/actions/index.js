@@ -8,7 +8,9 @@ import {
 import {
   getPosts as getPostsList,
   getImages as getImagesList,
-  getPostDetails as getPostInfo
+  getPostDetails as getPostInfo,
+  getPostComments,
+  getPostAuthor
 } from './../../services/api'
 
 export function getPosts() {
@@ -42,12 +44,23 @@ export function getPostsDetails(id) {
     dispatch({ type: SET_LOADER, payload: true})
 
     try {
-      const res = await getPostInfo(id)
-      const { data } = res
-      console.log(111)
-      console.log(data)
+      const postDetailsResponse = await getPostInfo(id)
+      const { data : postDetails } = postDetailsResponse
 
-      dispatch({ type: POST_DETAILS, payload: data})
+      const postAuthorDetailsResponse = await getPostAuthor(postDetails.userId)
+      const { data : postAuthorDetails } = postAuthorDetailsResponse
+
+      const postCommentsResponse = await getPostComments(postDetails.id)
+      const { data : postComments } = postCommentsResponse
+
+      dispatch({
+        type: POST_DETAILS,
+        payload: {
+          postDetails: postDetails,
+          authorDetails: postAuthorDetails,
+          comments: postComments
+        }
+      });
 
       dispatch({ type: SET_LOADER, payload: false})
     } catch (e) {
